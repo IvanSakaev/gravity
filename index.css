@@ -1,0 +1,39 @@
+body {
+  background: #252525;
+  color: #fff;
+}
+
+#labirinth {
+  position: relative;
+  top: 0;
+  left: 0;
+  background: #000;
+  border: 2px solid #fff;
+  width: 800px;
+  height: 800px;
+}
+
+#labirinth .vertical {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2px;
+  height: 10%;
+  background: #fff;
+}
+
+#labirinth .horizontal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 10%;
+  height: 2px;
+  background: #fff;
+}
+
+#hero {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+}
