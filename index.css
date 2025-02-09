@@ -31,9 +31,15 @@ body {
   background: #fff;
 }
 
-#hero {
+#labirinth #hero {
   position: absolute;
   z-index: 1;
+  top: 0;
+  left: 0;
+}
+
+#labirinth .planet {
+  position: absolute;
   top: 0;
   left: 0;
 }

@@ -17,16 +17,30 @@ let mousex = 0;
 let mousey = 0;
 let mousemove = false;
 
-document.addEventListener("mousemove", (e) => {
+document.addEventListener('mousemove', (e) => {
   mousex = e.clientX - 8;
   mousey = e.clientY - 8;
   mousemove = true;
 })
 
+document.addEventListener('click', (e) => {
+  mousex = e.clientX - 8;
+  mousey = e.clientY - 8;
+  if ((mousex > 15) && (mousex < (800 - 15))) {
+    if ((mousey > 16) && (mousey < (800 - 16))) {
+      let elem = document.createElement('img');
+      elem.classList.add('planet');
+      elem.src = 'assets/meteor.png';
+      elem.style.left = mousex - 15 + 'px';
+      elem.style.top = mousey - 16 + 'px';
+      labirinth.appendChild(elem);
+    }
+  }
+})
+
 setInterval(() => {
   if (mousemove) {
     let dist = Math.sqrt((mousex - x) * (mousex - x) + (mousey - y) * (mousey - y));
-    console.log(dist);
     if (dist > 1) {
       speedx += 10 * (mousex - x) / dist / dist;
       speedy += 10 * (mousey - y) / dist / dist;
@@ -49,9 +63,9 @@ setInterval(() => {
       speedy = 0;
     }
 
-    hero.style.left = x - (hero.width / 2) + "px";
-    hero.style.top = y - (hero.height / 2) + "px";
-    // hero.style.left = mousex - (hero.width / 2) + "px";
-    // hero.style.top = mousey - (hero.height / 2) + "px";
+    hero.style.left = x - (hero.width / 2) + 'px';
+    hero.style.top = y - (hero.height / 2) + 'px';
+    // hero.style.left = mousex - (hero.width / 2) + 'px';
+    // hero.style.top = mousey - (hero.height / 2) + 'px';
   }
 }, 1000 / 60);
