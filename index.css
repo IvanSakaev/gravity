@@ -34,8 +34,8 @@ body {
 #labirinth #hero {
   position: absolute;
   z-index: 1;
-  top: 0;
-  left: 0;
+  top: 400;
+  left: 400;
 }
 
 #labirinth .planet {
