@@ -1,5 +1,8 @@
-let width = 8;
-let height = 6;
+let width = 800;
+let height = 600;
+
+let lab_width = 8;
+let lab_height = 6;
 let walls = [
   [0, 0, 0, 6],
   [0, 0, 8, 0],
@@ -50,18 +53,21 @@ let speedx = 0;
 let speedy = 0;
 let planets = [];
 
+labirinth.style.width = width + 'px';
+labirinth.style.height = height + 'px';
+
 if (mode === 'labirinth') {
   for (let i = 0; i < walls.length; i++) {
     let elem = document.createElement('div');
     if (walls[i][0] === walls[i][2]) {
       elem.classList.add('vertical');
-      elem.style.height = (walls[i][3] - walls[i][1]) * 10 + '%';
+      elem.style.height = (walls[i][3] - walls[i][1]) / lab_height * 100 + '%';
     } else if (walls[i][1] === walls[i][3]) {
       elem.classList.add('horizontal');
-      elem.style.width = (walls[i][2] - walls[i][0]) * 10 + '%';
+      elem.style.width = (walls[i][2] - walls[i][0]) / lab_width * 100 + '%';
     }
-    elem.style.left = walls[i][0]*10 + '%';
-    elem.style.top = walls[i][1]*10 + '%';
+    elem.style.left = walls[i][0] / lab_width * 100 + '%';
+    elem.style.top = walls[i][1] / lab_height * 100 + '%';
     labirinth.appendChild(elem);
   }
 }
@@ -71,8 +77,8 @@ if (mode === 'random') {
     let elem = document.createElement('img');
     elem.classList.add('planet');
     elem.src = 'assets/meteor.png';
-    let a = Math.random() * (800 - 30);
-    let b = Math.random() * (800 - 32);
+    let a = Math.random() * (width - 30);
+    let b = Math.random() * (height - 32);
     elem.style.left = a + 'px';
     elem.style.top = b + 'px';
     labirinth.appendChild(elem);
@@ -83,8 +89,8 @@ if (mode === 'random') {
 document.addEventListener('click', (e) => {
   let mousex = e.clientX - 8;
   let mousey = e.clientY - 8;
-  if ((mousex > 15) && (mousex < (800 - 15))) {
-    if ((mousey > 16) && (mousey < (800 - 16))) {
+  if ((mousex > 15) && (mousex < (width - 15))) {
+    if ((mousey > 16) && (mousey < (height - 16))) {
       let elem = document.createElement('img');
       elem.classList.add('planet');
       elem.src = 'assets/meteor.png';
@@ -114,15 +120,15 @@ setInterval(() => {
   if (x < (hero.width / 2)) {
     x = hero.width / 2;
     speedx = 0;
-  } else if (x > (800 - hero.width / 2)) {
-    x = (800 - hero.width / 2);
+  } else if (x > (width - hero.width / 2)) {
+    x = (width - hero.width / 2);
     speedx = 0;
   }
   if (y < (hero.height / 2)) {
     y = hero.height / 2;
     speedy = 0;
-  } else if (y > (800 - hero.height / 2)) {
-    y = (800 - hero.height / 2);
+  } else if (y > (height - hero.height / 2)) {
+    y = (height - hero.height / 2);
     speedy = 0;
   }
 
