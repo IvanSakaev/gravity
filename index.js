@@ -47,8 +47,8 @@ if (urlParams.has('mode')) {
 
 let labirinth = document.getElementById('labirinth');
 let hero = document.getElementById('hero');
-let x = 400;
-let y = 400;
+let x = width / lab_width / 2;
+let y = height / lab_height / 2;
 let speedx = 0;
 let speedy = 0;
 let planets = [];
